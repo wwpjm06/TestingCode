@@ -5,7 +5,7 @@ c=1
 sCarryOn="C"
 while sCarryOn == "C":
 
-    while c <= 200:
+    while c <= 150:
         print(str(c))
         c+=1
 
