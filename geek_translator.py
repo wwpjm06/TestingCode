@@ -6,7 +6,8 @@ geek = {"404": "clueless.  From the web error message 404, meaning page not foun
         "Keyboard Plaque" : "the collection of debris found in computer keyboards.",
         "Link Rot" : "the process by which web page links become obsolete.",
         "Percussive Maintenance" : "the act of striking an electronic device to make it work.",
-        "Uninstalled" : "being fired.  Especially popular during the dot-bomb era."}
+        "Uninstalled" : "being fired.  Especially popular during the dot-bomb era.",
+        "Dodo" : "As Dead As A ...."}
 
 choice = None
 while choice != "0":
@@ -34,7 +35,7 @@ while choice != "0":
     elif choice == "1":
         term = input("What term do you want me to translate?: ")
         if term in geek:
-            definition = geek[term]
+            definition = geek[term].lower()
             print("\n", term, "means", definition)
         else:
             print("\nSorry, I don't know", term)
