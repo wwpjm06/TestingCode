@@ -4,60 +4,85 @@
 sCarryOn="C"
 while sCarryOn == "C":
 
-    CharAtts={"Dexterity" : 14,
+    CHARATTS={"Dexterity" : 14,
               "Health" : 10,
               "Strength" : 8,
               "Wisdom" : 12}
-    
+
     ExistAtts={}
     MaxPoints=30
 #    CurPoints = 0
     menuOpt=None
     AddAttrib=None
     
-    # Print menu
-    print("""
-
-         This is the Menu
-
-         0=Exit
-         1=Buy Attributes
-         2=Redeem Attributes
-         3=List Attributes
-
-         """)
     while menuOpt !=0:
 
+        # Print menu
+        print("""
+
+             Character Attributes Menu
+             =========================
+
+             0=Exit
+             1=Buy Attributes
+             2=Redeem Attributes
+             3=List Attributes
+
+             """)
+    
+        print("\nYou have " + str(MaxPoints) + " points\n")
         menuOpt=int(input("What selection do you want? :"))
 
-        
+
         if menuOpt == 1:
-            print("Option 1")
-            AddAttrib=input("Which attribute do you wish to buy? ")
+            print("\nYou have " + str(MaxPoints) + " points to buy " + str(CHARATTS) + "\n")
+            print("You own " + str(ExistAtts) + "\n")
             
+            AddAttrib=input("Which attribute do you wish to buy? ")
+
             if AddAttrib in ExistAtts:
                 print("You already have " + AddAttrib)
             else:
-#                print("\n"+ str(CharAtts.get(AddAttrib)) + " : " + str(CurPoints))
-                if MaxPoints >= CharAtts.get(AddAttrib):
-                    print("We'll add " + AddAttrib)
-                    ExistAtts[AddAttrib] = CharAtts.get(AddAttrib)
-                    print("You now have " + str(ExistAtts))
-                    MaxPoints -= CharAtts.get(AddAttrib)
-                    print("You now have " + str(MaxPoints) + " left")
-                else:
-                    if MaxPoints == 0:
-                        print("You don't have any points left")
+#                print("\n"+ str(.get(AddAttrib)) + " : " + str(CurPoints))
+                if AddAttrib in CHARATTS:
+                    if MaxPoints >= CHARATTS.get(AddAttrib):
+                        
+                        # Add Attribute to Directory ExistAtts
+                        ExistAtts[AddAttrib] = CHARATTS.get(AddAttrib)
+                        print("You now own " + str(ExistAtts))
+
+                        # Deduct points from MaxPoints
+                        MaxPoints -= CHARATTS.get(AddAttrib)
+
                     else:
-                        print("You only have "+str(MaxPoints))
-                    
+                        if MaxPoints == 0:
+                            print("You don't have any points left")
+                        else:
+    #                        print("You only have "+str(MaxPoints))
+                            print("You don't have enough points")
+                else:
+                    print("\n"+AddAttrib + " doesn't exist")
+        # End of Option 1
         elif menuOpt == 2:
-            print("Option 2")
+            print("You own " + str(ExistAtts))
+            AddAttrib=input("Which attribute do you wish to sell? ")
+            if AddAttrib in ExistAtts:
+                    
+                # Add points to MaxPoints
+                MaxPoints += ExistAtts.get(AddAttrib)
+
+                # Remove Attribute from Directory ExistAtts
+                del ExistAtts[AddAttrib]
+                print("You now own " + str(ExistAtts))
+            else:
+                print("You don't own " + AddAttrib)
+        # End of Option 2
         elif menuOpt == 3:
-            print("Option 3")
+            print("Option 3 - List Attributes\n")
+            print("You own " + str(ExistAtts)+"\n")
         else:
-            print("Not a valid option\n\n")
-    
+            if menuOpt != 0 :print("Not a valid option\n\n")
+
 
 
 
