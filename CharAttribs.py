@@ -4,9 +4,16 @@
 sCarryOn="C"
 while sCarryOn == "C":
 
-    CharAtts=[("Dexterity",14),("Health",10),("Strength",8),("Wisdom",12)]
+    CharAtts={"Dexterity" : 14,
+              "Health" : 10,
+              "Strength" : 8,
+              "Wisdom" : 12}
+    
+    ExistAtts={}
     MaxPoints=30
+#    CurPoints = 0
     menuOpt=None
+    AddAttrib=None
     
     # Print menu
     print("""
@@ -21,19 +28,35 @@ while sCarryOn == "C":
          """)
     while menuOpt !=0:
 
-        menuOpt=input("What slection do you want?")
+        menuOpt=int(input("What selection do you want? :"))
 
+        
         if menuOpt == 1:
             print("Option 1")
+            AddAttrib=input("Which attribute do you wish to buy? ")
+            
+            if AddAttrib in ExistAtts:
+                print("You already have " + AddAttrib)
+            else:
+#                print("\n"+ str(CharAtts.get(AddAttrib)) + " : " + str(CurPoints))
+                if MaxPoints >= CharAtts.get(AddAttrib):
+                    print("We'll add " + AddAttrib)
+                    ExistAtts[AddAttrib] = CharAtts.get(AddAttrib)
+                    print("You now have " + str(ExistAtts))
+                    MaxPoints -= CharAtts.get(AddAttrib)
+                    print("You now have " + str(MaxPoints) + " left")
+                else:
+                    if MaxPoints == 0:
+                        print("You don't have any points left")
+                    else:
+                        print("You only have "+str(MaxPoints))
+                    
         elif menuOpt == 2:
             print("Option 2")
         elif menuOpt == 3:
             print("Option 3")
-#        elif menuOpt == 0:
-#            print("Option 0")
-            # Break out
-#        else:
-#            print("Not a valid option\n\n")
+        else:
+            print("Not a valid option\n\n")
     
 
 
