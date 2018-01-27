@@ -1,4 +1,4 @@
-# Program to buy/redeem Character Attributes
+# Program to buy/redeem Character Attributes C5.C2
 # Plyer can buy/sell BUT can't own more than x1 Attribute OR all Attributes
 
 sCarryOn="C"
@@ -11,9 +11,8 @@ while sCarryOn == "C":
 
     ExistAtts={}
     MaxPoints=30
-#    CurPoints = 0
     menuOpt=None
-    AddAttrib=None
+    AttribItem=None
     
     while menuOpt !=0:
 
@@ -38,21 +37,21 @@ while sCarryOn == "C":
             print("\nYou have " + str(MaxPoints) + " points to buy " + str(CHARATTS) + "\n")
             print("You own " + str(ExistAtts) + "\n")
             
-            AddAttrib=input("Which attribute do you wish to buy? ")
+            AttribItem=input("Which attribute do you wish to buy? ")
 
-            if AddAttrib in ExistAtts:
-                print("You already have " + AddAttrib)
+            if AttribItem in ExistAtts:
+                print("You already have " + AttribItem)
             else:
-#                print("\n"+ str(.get(AddAttrib)) + " : " + str(CurPoints))
-                if AddAttrib in CHARATTS:
-                    if MaxPoints >= CHARATTS.get(AddAttrib):
+#                print("\n"+ str(.get(AttribItem)) + " : " + str(CurPoints))
+                if AttribItem in CHARATTS:
+                    if MaxPoints >= CHARATTS.get(AttribItem):
                         
                         # Add Attribute to Directory ExistAtts
-                        ExistAtts[AddAttrib] = CHARATTS.get(AddAttrib)
+                        ExistAtts[AttribItem] = CHARATTS.get(AttribItem)
                         print("You now own " + str(ExistAtts))
 
                         # Deduct points from MaxPoints
-                        MaxPoints -= CHARATTS.get(AddAttrib)
+                        MaxPoints -= CHARATTS.get(AttribItem)
 
                     else:
                         if MaxPoints == 0:
@@ -61,21 +60,21 @@ while sCarryOn == "C":
     #                        print("You only have "+str(MaxPoints))
                             print("You don't have enough points")
                 else:
-                    print("\n"+AddAttrib + " doesn't exist")
+                    print("\n"+AttribItem + " doesn't exist")
         # End of Option 1
         elif menuOpt == 2:
             print("You own " + str(ExistAtts))
-            AddAttrib=input("Which attribute do you wish to sell? ")
-            if AddAttrib in ExistAtts:
+            AttribItem=input("Which attribute do you wish to sell? ")
+            if AttribItem in ExistAtts:
                     
                 # Add points to MaxPoints
-                MaxPoints += ExistAtts.get(AddAttrib)
+                MaxPoints += ExistAtts.get(AttribItem)
 
                 # Remove Attribute from Directory ExistAtts
-                del ExistAtts[AddAttrib]
+                del ExistAtts[AttribItem]
                 print("You now own " + str(ExistAtts))
             else:
-                print("You don't own " + AddAttrib)
+                print("You don't own " + AttribItem)
         # End of Option 2
         elif menuOpt == 3:
             print("Option 3 - List Attributes\n")
