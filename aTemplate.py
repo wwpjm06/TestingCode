@@ -1,5 +1,10 @@
 # Template program
 
+import RPi.GPIO as GPIO
+import time
+
+
+
 sCarryOn="C"
 while sCarryOn == "C":
 
