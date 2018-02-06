@@ -4,8 +4,11 @@ import RPi.GPIO as GPIO
 #import time
 from time import sleep
 
+LEDPin = 17
+i=0
+
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(17,GPIO.OUT)
+GPIO.setup(LEDPin,GPIO.OUT)
 
 #sCarryOn="C"
 #while sCarryOn == "C":
@@ -15,12 +18,15 @@ try:
     # loop through 50 times, on/off for 1 second
     #for i in range(10):
     print("Before set Pin")
-    GPIO.output(17,True)
+    GPIO.output(LEDPin,True)
     print("After set Pin")
     #time.sleep(15)
-    sleep(5)
+    while i <=5000:
+        i+=1
+        print(str(i))
+    #sleep(5)
     print("After Sleep time")
-     #       GPIO.output(17,False)
+     #       GPIO.output(LEDPin,False)
      #       time.sleep(1)
   
 except KeyboardInterrupt:  
